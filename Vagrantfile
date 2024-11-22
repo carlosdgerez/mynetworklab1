@@ -3,7 +3,7 @@ BOX = "bento/ubuntu-22.04"
 
 Vagrant.configure("2") do |config|
   # Define the virtual machines
-  config.vm.define "load_balancer" do |lb|
+  config.vm.define :lb do |lb|
     lb.vm.box = BOX
     lb.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     lb.vm.network "public_network", type: "dhcp"
@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.define "web1" do |web1|
+  config.vm.define :web1 do |web1|
     web1.vm.box = BOX
     web1.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     web1.vm.network "forwarded_port", guest: 80, host: 8081
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.define "web2" do |web2|
+  config.vm.define :web2 do |web2|
     web2.vm.box = BOX
     web2.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     web2.vm.network "forwarded_port", guest: 80, host: 8082
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.define "internal_box" do |internal|
+  config.vm.define :internal do |internal|
     internal.vm.box = BOX
     internal.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     internal.vm.provision "shell", inline: <<-SHELL

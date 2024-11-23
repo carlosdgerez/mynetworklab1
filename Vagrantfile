@@ -3,10 +3,21 @@ BOX = "bento/ubuntu-22.04"
 
 Vagrant.configure("2") do |config|
   # Define the virtual machines
+  config.vm.boot_timeout= 600
+  config.vm.define :puppet do |puppet|
+   puppet.vm.box = BOX
+   puppet.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
+   puppet.vm.network "public_network", type: "dhcp"
+   puppet.vm.synced_folder ".", "/myPuppetLab"
+   puppet.vm.hostname = "puppet.local"
+  end
+
   config.vm.define :lb do |lb|
     lb.vm.box = BOX
+    config.vm.boot_timeout= 600
     lb.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     lb.vm.network "public_network", type: "dhcp"
+    lb.vm.hostname = "lb.local"
     lb.vm.provision "shell", inline: <<-SHELL
       # Install HAProxy (or any load balancer you prefer)
       sudo apt-get update
@@ -19,9 +30,11 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :web1 do |web1|
+    config.vm.boot_timeout= 600
     web1.vm.box = BOX
     web1.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     web1.vm.network "forwarded_port", guest: 80, host: 8081
+    web1.vm.hostname = "web1.local"
     web1.vm.provision "shell", inline: <<-SHELL
       # Install Apache or any web server
       sudo apt-get update
@@ -31,9 +44,11 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :web2 do |web2|
+    config.vm.boot_timeout= 600
     web2.vm.box = BOX
     web2.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     web2.vm.network "forwarded_port", guest: 80, host: 8082
+    web2.vm.hostname = "web2.local"
     web2.vm.provision "shell", inline: <<-SHELL
       # Install Apache or any web server
       sudo apt-get update
@@ -43,6 +58,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :internal do |internal|
+    config.vm.boot_timeout= 600
     internal.vm.box = BOX
     internal.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
     internal.vm.provision "shell", inline: <<-SHELL
@@ -52,9 +68,11 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.define "database" do |db|
+  config.vm.define :database do |db|
+    config.vm.boot_timeout= 600
     db.vm.box = BOX
     db.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
+    db.vm.hostname = "db.local"
     db.vm.provision "shell", inline: <<-SHELL
       # Install a database (e.g., MySQL)
       sudo apt-get update
@@ -63,6 +81,7 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
+   
   # Define the internal network that all machines will connect to
-  config.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
+   config.vm.network "private_network", type: "dhcp", virtualbox__intnet: "internal_network"
 end

@@ -4,7 +4,7 @@ BOX = "ubuntu/xenial64"
 Vagrant.configure("2") do |config|
   # Define the base box to use
   config.vm.box = BOX  # You can choose any base box
- # config.vm.boot_timeout= 600
+  config.vm.boot_timeout= 600
 
   # Define the load balancer VM with a static IP
   config.vm.define :lb do |lb|
@@ -16,33 +16,8 @@ Vagrant.configure("2") do |config|
     lb.vm.provider "virtualbox" do |vb|
       vb.memory = "512"  # Adjust the memory allocation
     end
-    lb.vm.provision "shell", inline: <<-SHELL
-      # Install HAProxy for load balancing
-      sudo apt-get update
-      sudo apt-get install -y haproxy
-      sudo systemctl enable haproxy
-      # Configure HAProxy with round robin for the web servers
-      echo "global
-        log 127.0.0.1 local0
-        maxconn 200
-
-      defaults
-        log     global
-        option  httplog
-        timeout connect 5000ms
-        timeout client  50000ms
-        timeout server  50000ms
-
-      frontend http-in
-        bind *:80
-        default_backend servers
-
-      backend servers
-        balance roundrobin
-        server web1 192.168.56.11:80 check
-        server web2 192.168.56.12:80 check" | sudo tee /etc/haproxy/haproxy.cfg
-      sudo systemctl restart haproxy
-    SHELL
+    #lb.vm.provision "shell", inline: <<-SHELL
+      
   end
 
   # Define the first web server VM with a static IP

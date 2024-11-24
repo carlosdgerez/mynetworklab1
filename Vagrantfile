@@ -1,15 +1,15 @@
 
-BOX = "bento/ubuntu-22.04"
+BOX = "hashicorp/precise64"
 
 Vagrant.configure("2") do |config|
   # Define the base box to use
   config.vm.box = BOX  # You can choose any base box
-  config.vm.boot_timeout= 600
+ # config.vm.boot_timeout= 600
 
   # Define the load balancer VM with a static IP
   config.vm.define :lb do |lb|
     lb.vm.hostname = "lb.local"
-    lb.vm.network :private_network, ip: "192.168.56.10"  # Static IP for the load balancer
+    lb.vm.network "private_network", ip: "192.168.56.10"  # Static IP for the load balancer
     lb.vm.network "forwarded_port", guest: 80, host: 8080
     lb.vm.synced_folder ".", "/myPuppetLab"
    #lb.vm.network "public_network"  # Public network to connect to the internet
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
   # Define the first web server VM with a static IP
   config.vm.define :web1 do |web1|
     web1.vm.hostname = "web1.local"
-    web1.vm.network :private_network, ip: "192.168.56.11"  # Static IP for web server 1
+    web1.vm.network "private_network", ip: "192.168.56.11"  # Static IP for web server 1
     web1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end

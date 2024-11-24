@@ -175,3 +175,26 @@
 [    3.004029] pci 0000:00:01.1: legacy IDE quirk: reg 0x14: [io  0x03f6]
 [    3.064022] pci 0000:00:01.1: legacy IDE quirk: reg 0x18: [io  0x0170-0x0177]
 [    3.132025] pci 0000:00:01.1: legacy IDE quirk: reg 0x1c: [io  0x0376]
+[    3.604220] pci 0000:00:07.0: quirk: [io  0x4000-0x403f] claimed by PIIX4 ACPI
+[    3.608187] pci 0000:00:07.0: quirk: [io  0x4100-0x410f] claimed by PIIX4 SMB
+[    3.680885] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 9 10 *11)
+[    3.785801] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 9 *10 11)
+[    3.816078] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 *9 10 11)
+[    3.848094] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 9 10 *11)
+[    3.937469] ACPI: Enabled 2 GPEs in block 00 to 07
+[    3.996945] vgaarb: setting as boot device: PCI:0000:00:02.0
+[    4.000000] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+[    4.072027] vgaarb: loaded
+[    4.088013] vgaarb: bridge control possible 0000:00:02.0
+[    4.117290] SCSI subsystem initialized
+[    4.140682] ACPI: bus type USB registered
+[    4.165219] usbcore: registered new interface driver usbfs
+[    4.204077] usbcore: registered new interface driver hub
+[    4.240056] usbcore: registered new device driver usb
+[    4.280396] PCI: Using ACPI for IRQ routing
+[    4.318136] NetLabel: Initializing
+[    4.344017] NetLabel:  domain hash size = 128
+[    4.384015] NetLabel:  protocols = UNLABELED CIPSOv4
+[    4.444894] NetLabel:  unlabeled traffic allowed by default
+[    4.499448] amd_nb: Cannot enumerate AMD northbridges
+[    4.544291] clocksource: Switched to clocksource kvm-clock

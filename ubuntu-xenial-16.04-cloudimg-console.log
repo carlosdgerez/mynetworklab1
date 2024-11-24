@@ -198,3 +198,153 @@
 [    4.444894] NetLabel:  unlabeled traffic allowed by default
 [    4.499448] amd_nb: Cannot enumerate AMD northbridges
 [    4.544291] clocksource: Switched to clocksource kvm-clock
+[    4.689759] AppArmor: AppArmor Filesystem Enabled
+[    4.689759] pnp: PnP ACPI init
+[    4.689759] pnp: PnP ACPI: found 3 devices
+[    5.026777] clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+[    5.063258] NET: Registered protocol family 2
+[    5.091418] TCP established hash table entries: 4096 (order: 3, 32768 bytes)
+[    5.140151] TCP bind hash table entries: 4096 (order: 4, 65536 bytes)
+[    5.194962] TCP: Hash tables configured (established 4096 bind 4096)
+[    5.240524] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    5.281682] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    5.315139] NET: Registered protocol family 1
+[    5.356439] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    5.415791] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+[    5.467443] Unpacking initramfs...
+[    5.512090] Freeing initrd memory: 14888K
+[    8.131068] clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x396d4e5fc9d, max_idle_ns: 881590756024 ns
+[    8.218346] platform rtc_cmos: registered platform RTC device (no PNP device found)
+[    8.283892] Scanning for low memory corruption every 60 seconds
+[    8.361371] audit: initializing netlink subsys (disabled)
+[    8.406070] audit: type=2000 audit(1732490455.595:1): initialized
+[    8.443042] Initialise system trusted keyring
+[    8.490665] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[    8.549109] zbud: loaded
+[    8.625328] VFS: Disk quotas dquot_6.6.0
+[    8.643938] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    8.681423] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    8.715295] fuse init (API version 7.23)
+[    8.736394] Key type big_key registered
+[    8.753126] Allocating IMA MOK and blacklist keyrings.
+[    8.832751] Key type asymmetric registered
+[    8.849953] Asymmetric key parser 'x509' registered
+[    8.876885] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    8.910711] io scheduler noop registered
+[    8.927332] io scheduler deadline registered (default)
+[    8.949579] io scheduler cfq registered
+[    8.966356] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+[    8.991235] pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+[    9.019903] ACPI: AC Adapter [AC] (on-line)
+[    9.041925] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    9.081939] ACPI: Power Button [PWRF]
+[    9.104844] input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+[    9.147312] ACPI: Sleep Button [SLPF]
+[    9.173563] GHES: HEST is not enabled!
+[    9.181448] ACPI: Battery Slot [BAT0] (battery present)
+[    9.220028] Serial: 8250/16550 driver, 32 ports, IRQ sharing enabled
+[    9.336368] 00:02: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[    9.380966] Linux agpgart interface v0.103
+[    9.422542] loop: module loaded
+[    9.451008] scsi host0: ata_piix
+[    9.469515] scsi host1: ata_piix
+[    9.488419] ata1: PATA max UDMA/33 cmd 0x1f0 ctl 0x3f6 bmdma 0xd000 irq 14
+[    9.517392] ata2: PATA max UDMA/33 cmd 0x170 ctl 0x376 bmdma 0xd008 irq 15
+[    9.546586] libphy: Fixed MDIO Bus: probed
+[    9.569826] tun: Universal TUN/TAP device driver, 1.6
+[    9.590507] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    9.615885] PPP generic driver version 2.4.2
+[    9.632452] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    9.655763] ehci-pci: EHCI PCI platform driver
+[    9.675510] ehci-platform: EHCI generic platform driver
+[    9.695819] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    9.719206] ohci-pci: OHCI PCI platform driver
+[    9.775566] ohci-platform: OHCI generic platform driver
+[    9.790637] uhci_hcd: USB Universal Host Controller Interface driver
+[    9.814122] i8042: PNP: PS/2 Controller [PNP0303:PS2K,PNP0f03:PS2M] at 0x60,0x64 irq 1,12
+[    9.868354] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    9.884487] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    9.903432] mousedev: PS/2 mouse device common for all mice
+[    9.934538] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input2
+[    9.964536] rtc_cmos rtc_cmos: rtc core: registered rtc_cmos as rtc0
+[    9.987855] rtc_cmos rtc_cmos: alarms up to one day, 114 bytes nvram
+[   10.008935] i2c /dev entries driver
+[   10.012736] device-mapper: uevent: version 1.0.3
+[   10.031763] device-mapper: ioctl: 4.34.0-ioctl (2015-10-28) initialised: dm-devel@redhat.com
+[   10.054285] ledtrig-cpu: registered to indicate activity on CPUs
+[   10.078577] NET: Registered protocol family 10
+[   10.093344] NET: Registered protocol family 17
+[   10.108912] Key type dns_resolver registered
+[   10.123456] registered taskstats version 1
+[   10.136717] Loading compiled-in X.509 certificates
+[   10.155390] Loaded X.509 cert 'Build time autogenerated kernel key: cf00e047681d67edb2720680708b7d9498083038'
+[   10.184700] zswap: loaded using pool lzo/zbud
+[   10.215367] Key type trusted registered
+[   10.255507] Key type encrypted registered
+[   10.269164] AppArmor: AppArmor sha1 policy hashing enabled
+[   10.288057] ima: No TPM chip found, activating TPM-bypass!
+[   10.308361] ima: Allocated hash algorithm: sha1
+[   10.329376] evm: HMAC attrs: 0x1
+[   10.347657]   Magic number: 0:548:353
+[   10.365979] rtc_cmos rtc_cmos: setting system clock to 2024-11-24 23:20:57 UTC (1732490457)
+[   10.395762] BIOS EDD facility v0.16 2004-Jun-25, 0 devices found
+[   10.416147] EDD information not available.
+[   10.437259] Freeing unused kernel memory: 1492K
+[   10.454048] Write protecting the kernel read-only data: 14336k
+[   10.475162] Freeing unused kernel memory: 1584K
+[   10.495416] Freeing unused kernel memory: 52K
+Loading, please wait...
+starting version 229
+[   10.615120] random: systemd-udevd: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.616904] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.616969] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.662641] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.662804] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.663503] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.663791] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.664683] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.664934] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   10.665144] random: udevadm: uninitialized urandom read (16 bytes read, 12 bits of entropy available)
+[   11.213171] e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+[   11.240232] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[   11.272181] Fusion MPT base driver 3.04.20
+[   11.289256] Copyright (c) 1999-2008 LSI Corporation
+[   11.516638] Fusion MPT SPI Host driver 3.04.20
+[   11.571535] SSE version of gcm_enc/dec engaged.
+[   11.882754] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input4
+[   13.142549] e1000 0000:00:03.0 eth0: (PCI:33MHz:32-bit) 02:be:82:6b:cc:1d
+[   13.167088] e1000 0000:00:03.0 eth0: Intel(R) PRO/1000 Network Connection
+[   13.202178] mptbase: ioc0: Initiating bringup
+[   13.339900] ioc0: LSI53C1030 A0: Capabilities={Initiator}
+[   13.679972] scsi host2: ioc0: LSI53C1030 A0, FwRev=00000000h, Ports=1, MaxQ=256, IRQ=20
+[   13.847266] scsi 2:0:0:0: Direct-Access     VBOX     HARDDISK         1.0  PQ: 0 ANSI: 5
+[   13.887073] scsi target2:0:0: Beginning Domain Validation
+[   13.939603] scsi target2:0:0: Domain Validation skipping write tests
+[   13.965969] scsi target2:0:0: Ending Domain Validation
+[   13.993833] scsi target2:0:0: asynchronous
+[   14.029298] scsi 2:0:1:0: Direct-Access     VBOX     HARDDISK         1.0  PQ: 0 ANSI: 5
+[   14.073359] scsi target2:0:1: Beginning Domain Validation
+[   14.133274] scsi target2:0:1: Domain Validation skipping write tests
+[   14.162829] scsi target2:0:1: Ending Domain Validation
+[   14.190353] scsi target2:0:1: asynchronous
+[   14.263801] sd 2:0:0:0: [sda] 83886080 512-byte logical blocks: (42.9 GB/40.0 GiB)
+[   14.321783] sd 2:0:0:0: Attached scsi generic sg0 type 0
+[   14.351887] sd 2:0:1:0: Attached scsi generic sg1 type 0
+[   14.380892] sd 2:0:1:0: [sdb] 20480 512-byte logical blocks: (10.5 MB/10.0 MiB)
+[   14.417709] sd 2:0:1:0: [sdb] Write Protect is off
+[   14.441400] sd 2:0:0:0: [sda] Write Protect is off
+[   14.465610] sd 2:0:1:0: [sdb] Incomplete mode parameter data
+[   14.490229] sd 2:0:1:0: [sdb] Assuming drive cache: write through
+[   14.523665] sd 2:0:0:0: [sda] Incomplete mode parameter data
+[   14.550190] sd 2:0:0:0: [sda] Assuming drive cache: write through
+[   14.606114]  sda: sda1
+[   14.645263] sd 2:0:0:0: [sda] Attached SCSI disk
+[   14.660825] sd 2:0:1:0: [sdb] Attached SCSI disk
+[   15.710665] e1000 0000:00:08.0 eth1: (PCI:33MHz:32-bit) 08:00:27:86:c4:6c
+[   15.733897] e1000 0000:00:08.0 eth1: Intel(R) PRO/1000 Network Connection
+[   15.766140] e1000 0000:00:03.0 enp0s3: renamed from eth0
+[   15.794179] e1000 0000:00:08.0 enp0s8: renamed from eth1
+Begin: Loading essential drivers ... [   18.857383] md: linear personality registered for level -1
+[   18.897192] md: multipath personality registered for level -4
+[   18.931771] md: raid0 personality registered for level 0
+[   19.021423] md: raid1 personality registered for level 1

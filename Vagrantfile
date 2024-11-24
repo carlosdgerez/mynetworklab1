@@ -1,5 +1,5 @@
 
-BOX = "hashicorp/precise64"
+BOX = "ubuntu/xenial64"
 
 Vagrant.configure("2") do |config|
   # Define the base box to use
@@ -52,13 +52,13 @@ Vagrant.configure("2") do |config|
     web1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-    web1.vm.provision "shell", inline: <<-SHELL
-      sudo apt-get update
-      sudo apt-get install -y apache2
-      echo "Web Server 1" | sudo tee /var/www/html/index.html
-      sudo systemctl enable apache2
-      sudo systemctl start apache2
-    SHELL
+  #  web1.vm.provision "shell", inline: <<-SHELL
+  #    sudo apt-get update
+  #    sudo apt-get install -y apache2
+  #    echo "Web Server 1" | sudo tee /var/www/html/index.html
+  #    sudo systemctl enable apache2
+  #    sudo systemctl start apache2
+  #  SHELL
   end
 
   # Define the second web server VM with a static IP
@@ -68,13 +68,13 @@ Vagrant.configure("2") do |config|
     web2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-    web2.vm.provision "shell", inline: <<-SHELL
-      sudo apt-get update
-      sudo apt-get install -y apache2
-      echo "Web Server 2" | sudo tee /var/www/html/index.html
-      sudo systemctl enable apache2
-      sudo systemctl start apache2
-    SHELL
+   # web2.vm.provision "shell", inline: <<-SHELL
+   #   sudo apt-get update
+   #   sudo apt-get install -y apache2
+   #   echo "Web Server 2" | sudo tee /var/www/html/index.html
+   #   sudo systemctl enable apache2
+   #   sudo systemctl start apache2
+   # SHELL
   end
 
   # Define the database server VM with a static IP (in a secure zone)
@@ -84,16 +84,16 @@ Vagrant.configure("2") do |config|
     db.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-    db.vm.provision "shell", inline: <<-SHELL
-      sudo apt-get update
-      sudo apt-get install -y mariadb-server
-      sudo mysql_secure_installation
+   # db.vm.provision "shell", inline: <<-SHELL
+   #   sudo apt-get update
+   #   sudo apt-get install -y mariadb-server
+   #   sudo mysql_secure_installation
       # Set up the database (optional)
-      mysql -e "CREATE DATABASE mydb;"
-      mysql -e "CREATE USER 'carlos'@'%' IDENTIFIED BY 'password';"
-      mysql -e "GRANT ALL PRIVILEGES ON mydb.* TO 'carlos'@'%';"
-      sudo systemctl enable mariadb
-      sudo systemctl start mariadb
-    SHELL
+   #   mysql -e "CREATE DATABASE mydb;"
+    #  mysql -e "CREATE USER 'carlos'@'%' IDENTIFIED BY 'password';"
+    #  mysql -e "GRANT ALL PRIVILEGES ON mydb.* TO 'carlos'@'%';"
+    #  sudo systemctl enable mariadb
+    #  sudo systemctl start mariadb
+   # SHELL
   end
 end

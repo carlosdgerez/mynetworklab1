@@ -1,4 +1,4 @@
-
+#! /bin/bash
 
 # Install HAProxy for load balancing
       sudo apt-get update

@@ -4,7 +4,8 @@ BOX = "ubuntu/xenial64"
 Vagrant.configure("2") do |config|
   # Define the base box to use
   config.vm.box = BOX  # You can choose any base box
-  config.vm.boot_timeout= 600
+  config.vm.boot_timeout= 300
+  config.ssh.insert_key = true
 
   # Define the load balancer VM with a static IP
   config.vm.define :lb do |lb|

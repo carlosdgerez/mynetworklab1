@@ -17,13 +17,14 @@ Vagrant.configure("2") do |config|
     lb.vm.network "private_network", ip: "192.168.50.20"      # Internal network
     lb.vm.network "public_network", type: "dhcp"              # NAT for internet
 
-    lb.vm.synced_folder ".", "/myPuppetLab"
+   # lb.vm.synced_folder ".", "/myPuppetLab"
 
     lb.vm.provider "virtualbox" do |vb|
       vb.memory = "512"  # Adjust the memory allocation
     end
+    lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"  
     lb.vm.provision "shell", path: "provisioners/firewalllb.sh"
-    lb.vm.provision "shell", path: "provisioners/puppetserverInstall.sh"  
+    
   end
 
   # Define the first web server VM with a static IP
@@ -37,6 +38,7 @@ Vagrant.configure("2") do |config|
     web1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
+    web1.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web1.vm.provision "shell", path: "provisioners/firewallweb.sh"
   
   end
@@ -52,6 +54,7 @@ Vagrant.configure("2") do |config|
     web2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
+    web2.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web2.vm.provision "shell", path: "provisioners/firewallweb.sh"
    
   end
@@ -66,6 +69,7 @@ Vagrant.configure("2") do |config|
     db.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
+    db.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     db.vm.provision "shell", path: "provisioners/firewalldb.sh"
    
   end
@@ -75,10 +79,11 @@ Vagrant.configure("2") do |config|
     puppet.vm.network "private_network", ip: "192.168.50.10" # Management network
     puppet.vm.network "public_network", type: "dhcp"          # NAT for internet
 
-    puppet.vm.synced_folder ".", "/myPuppetLab"
+    puppet.vm.synced_folder ".", "/mynetworklab"
     puppet.vm.provider "virtualbox" do |vb|
-      vb.memory = "2048"  # Adjust the memory allocation
+      vb.memory = "3072"  # Adjust the memory allocation
     end
+    puppet.vm.provision "shell", path: "provisioners/puppetserverInstall.sh"
     puppet.vm.provision "shell", path: "provisioners/firewallPuppet.sh"
       
   end

@@ -1,1 +1,1 @@
-{"name":"ubuntu/xenial64","version":"20211001.0.5","provider":"virtualbox","directory":"boxes/ubuntu-VAGRANTSLASH-xenial64/20211001.0.5/virtualbox"}
+{"name":"ubuntu/bionic64","version":"20230607.0.5","provider":"virtualbox","directory":"boxes/ubuntu-VAGRANTSLASH-bionic64/20230607.0.5/virtualbox"}

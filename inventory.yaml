@@ -1,0 +1,17 @@
+groups:
+  - name: linux
+    targets:
+      - puppet.local
+      - web1.local
+      - web2.local
+      - db.local
+    config:
+      transport: ssh
+      ssh:
+        user: vagrant
+        run-as: root
+        private-key: /puppet_course/puppet-ssh-key
+config:
+  ssh:
+    host-key-check: false
+    native-ssh: true

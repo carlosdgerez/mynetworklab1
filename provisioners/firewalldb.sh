@@ -18,7 +18,7 @@ sudo iptables -A FORWARD -i eth0 -j ACCEPT
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 # Deny other outgoing traffic
-sudo iptables -A OUTPUT -j DROP
+# sudo iptables -A OUTPUT -j DROP
 
 # save the rules
 

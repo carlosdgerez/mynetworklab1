@@ -1,5 +1,5 @@
 
-BOX = "ubuntu/xenial64"
+BOX = "ubuntu/bionic64"
 
 Vagrant.configure("2") do |config|
   # Define the base box to use
@@ -10,66 +10,76 @@ Vagrant.configure("2") do |config|
   # Define the load balancer VM with a static IP
   config.vm.define :lb do |lb|
     lb.vm.hostname = "lb.local"
-    lb.vm.network "private_network", ip: "192.168.56.10"  # Static IP for the load balancer
-    lb.vm.network "forwarded_port", guest: 80, host: 8080
+
+    # Forward ports for HTTP and HTTPS traffic
+    lb.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+    lb.vm.network "forwarded_port", guest: 443, host: 8443, auto_correct: true
+    lb.vm.network "private_network", ip: "192.168.50.20"      # Internal network
+    lb.vm.network "public_network", type: "dhcp"              # NAT for internet
+
     lb.vm.synced_folder ".", "/myPuppetLab"
-   #lb.vm.network "public_network"  # Public network to connect to the internet
+
     lb.vm.provider "virtualbox" do |vb|
       vb.memory = "512"  # Adjust the memory allocation
     end
-    #lb.vm.provision "shell", inline: <<-SHELL
-      
+    lb.vm.provision "shell", path: "provisioners/firewalllb.sh"
+    lb.vm.provision "shell", path: "provisioners/puppetserverInstall.sh"  
   end
 
   # Define the first web server VM with a static IP
   config.vm.define :web1 do |web1|
     web1.vm.hostname = "web1.local"
-    web1.vm.network "private_network", ip: "192.168.56.11"  # Static IP for web server 1
+
+    web1.vm.network "private_network", ip: "192.168.50.21"    # Internal network
+    web1.vm.network "private_network", ip: "192.168.60.21"    # Secure zone
+    web1.vm.network "public_network", type: "dhcp"            # NAT for internet
+
     web1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-  #  web1.vm.provision "shell", inline: <<-SHELL
-  #    sudo apt-get update
-  #    sudo apt-get install -y apache2
-  #    echo "Web Server 1" | sudo tee /var/www/html/index.html
-  #    sudo systemctl enable apache2
-  #    sudo systemctl start apache2
-  #  SHELL
+    web1.vm.provision "shell", path: "provisioners/firewallweb.sh"
+  
   end
 
   # Define the second web server VM with a static IP
   config.vm.define :web2 do |web2|
     web2.vm.hostname = "web2.local"
-    web2.vm.network "private_network", ip: "192.168.56.12"  # Static IP for web server 2
+
+    web2.vm.network "private_network", ip: "192.168.50.22"    # Internal network
+    web2.vm.network "private_network", ip: "192.168.60.22"    # Secure zone
+    web2.vm.network "public_network", type: "dhcp"            # NAT for internet
+
     web2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-   # web2.vm.provision "shell", inline: <<-SHELL
-   #   sudo apt-get update
-   #   sudo apt-get install -y apache2
-   #   echo "Web Server 2" | sudo tee /var/www/html/index.html
-   #   sudo systemctl enable apache2
-   #   sudo systemctl start apache2
-   # SHELL
+    web2.vm.provision "shell", path: "provisioners/firewallweb.sh"
+   
   end
 
   # Define the database server VM with a static IP (in a secure zone)
   config.vm.define :db do |db|
     db.vm.hostname = "db.local"
-    db.vm.network "private_network", ip: "192.168.56.13"  # Static IP for MariaDB server
+
+    db.vm.network "private_network", ip: "192.168.60.10"      # Secure zone
+    db.vm.network "public_network", type: "dhcp"              # NAT for internet
+
     db.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-   # db.vm.provision "shell", inline: <<-SHELL
-   #   sudo apt-get update
-   #   sudo apt-get install -y mariadb-server
-   #   sudo mysql_secure_installation
-      # Set up the database (optional)
-   #   mysql -e "CREATE DATABASE mydb;"
-    #  mysql -e "CREATE USER 'carlos'@'%' IDENTIFIED BY 'password';"
-    #  mysql -e "GRANT ALL PRIVILEGES ON mydb.* TO 'carlos'@'%';"
-    #  sudo systemctl enable mariadb
-    #  sudo systemctl start mariadb
-   # SHELL
+    db.vm.provision "shell", path: "provisioners/firewalldb.sh"
+   
+  end
+  config.vm.define :puppet do |puppet|
+    puppet.vm.hostname = "puppet.local"
+
+    puppet.vm.network "private_network", ip: "192.168.50.10" # Management network
+    puppet.vm.network "public_network", type: "dhcp"          # NAT for internet
+
+    puppet.vm.synced_folder ".", "/myPuppetLab"
+    puppet.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"  # Adjust the memory allocation
+    end
+    puppet.vm.provision "shell", path: "provisioners/firewallPuppet.sh"
+      
   end
 end

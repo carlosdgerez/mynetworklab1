@@ -1,17 +1,13 @@
 #! /bin/bash
 
-# Download the puppet apt repositories config packages
-curl -O https://apt.puppet.com/puppet8-release-jammy.deb
-curl -O https://apt.puppet.com/puppet-tools-release-jammy.deb
+wget https://apt.puppetlabs.com/puppet6-release-focal.deb 
+sudo dpkg -i puppet6-release-focal.deb
+sudo apt update
 
-# Install the puppet apt repositories config packages
-sudo dpkg -i puppet8-release-jammy.deb puppet-tools-release-jammy.deb
-
-# Update the apt package list
+ # Install Puppet server (puppet agent and server on the same machine)
 sudo apt-get update
+sudo apt-get install -y puppetserver
 
-# Install the packages for Zeroconf DNS
-sudo apt-get install -y avahi-daemon avahi-utils libnss-mdns
 
-# Install Puppetserver and other puppet tools
-sudo apt-get install -y puppetserver puppet-bolt pdk
+
+

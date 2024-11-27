@@ -5,12 +5,13 @@ groups:
       - web1.local
       - web2.local
       - db.local
+      - lb.local
     config:
       transport: ssh
       ssh:
         user: vagrant
         run-as: root
-        private-key: /puppet_course/puppet-ssh-key
+        private-key: /mynetworklab/puppet-ssh-key
 config:
   ssh:
     host-key-check: false

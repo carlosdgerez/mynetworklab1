@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
 
     web1.vm.network "private_network", ip: "192.168.50.21"    # Internal network
     web1.vm.network "private_network", ip: "192.168.60.21"    # Secure zone
-    web1.vm.network "public_network", type: "dhcp"            # NAT for internet
+   # web1.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
 
     web1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
 
     web2.vm.network "private_network", ip: "192.168.50.22"    # Internal network
     web2.vm.network "private_network", ip: "192.168.60.22"    # Secure zone
-    web2.vm.network "public_network", type: "dhcp"            # NAT for internet
+   # web2.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
 
     web2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
@@ -64,8 +64,8 @@ Vagrant.configure("2") do |config|
     db.vm.hostname = "db.local"
 
     db.vm.network "private_network", ip: "192.168.60.10"      # Secure zone
-    db.vm.network "public_network", type: "dhcp"              # NAT for internet
-
+    db.vm.network "public_network", type: "dhcp"              # NAT for internet. Comented to block. (sudo ifconfig enp0s9 down) as fast alternative.
+ 
     db.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
@@ -77,7 +77,8 @@ Vagrant.configure("2") do |config|
     puppet.vm.hostname = "puppet.local"
 
     puppet.vm.network "private_network", ip: "192.168.50.10" # Management network
-    puppet.vm.network "public_network", type: "dhcp"          # NAT for internet
+    puppet.vm.network "public_network", type: "dhcp"          # NAT for internet. Review latter restricted access.
+
 
     puppet.vm.synced_folder ".", "/mynetworklab"
     puppet.vm.provider "virtualbox" do |vb|

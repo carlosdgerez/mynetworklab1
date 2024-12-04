@@ -6,7 +6,7 @@ sudo apt update
 
  # Install Puppet server (puppet agent and server on the same machine)
 sudo apt-get update
-sudo apt-get install -y puppetserver
+sudo apt-get install -y puppetserver pdk
 sudo systemctl start puppetserver
 
 

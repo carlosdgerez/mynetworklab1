@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     lb.vm.network "private_network", ip: "192.168.50.20"      # Internal network
     lb.vm.network "public_network", type: "dhcp"              # NAT for internet
 
-   # lb.vm.synced_folder ".", "/myPuppetLab"
+    lb.vm.synced_folder ".", "/myPuppetLab"
 
     lb.vm.provider "virtualbox" do |vb|
       vb.memory = "512"  # Adjust the memory allocation

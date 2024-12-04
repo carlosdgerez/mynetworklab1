@@ -1,1 +1,2 @@
-include apache
+include profile::base
+include profile::website

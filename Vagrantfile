@@ -64,7 +64,8 @@ Vagrant.configure("2") do |config|
     db.vm.hostname = "db.local"
     db.vm.network "forwarded_port", guest: 80, host: 9093, auto_correct: true
     db.vm.network "private_network", ip: "192.168.60.10"      # Secure zone
-    db.vm.network "public_network", type: "dhcp"              # NAT for internet. Comented to block. (sudo ifconfig enp0s9 down) as fast alternative.
+    db.vm.network "public_network", type: "dhcp"              # NAT for internet. Comented to block. 
+                                                              # (sudo ifconfig enp0s9 down) as fast alternative.
  
     db.vm.provider "virtualbox" do |vb|
       vb.memory = "512"

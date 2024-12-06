@@ -6,6 +6,7 @@ sudo iptables -A INPUT -s 192.168.60.22 -j ACCEPT
 
 # Allow traffic from puppet server
 sudo iptables -A INPUT -s 192.168.50.10 -j ACCEPT
+sudo iptables -A OUTPUT -d 192.168.50.10 -j ACCEPT
 
 
 # Allow port 22 for ssh to host

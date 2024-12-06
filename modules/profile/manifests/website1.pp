@@ -1,4 +1,4 @@
-class profile::website {
+class profile::website1 {
   class { 'apache':
     default_vhost => false,
   }
@@ -9,6 +9,6 @@ class profile::website {
   }
 
   file {'/var/www/vhost/index.html':
-    content => 'Hello to Carlos World',
+    content => 'Hello to web server 1',
   }
 }

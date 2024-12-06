@@ -1,0 +1,114 @@
+{
+  "name": "puppet-python",
+  "version": "7.4.0",
+  "author": "Vox Pupuli",
+  "summary": "Puppet module for Python",
+  "license": "Apache-2.0",
+  "source": "https://github.com/voxpupuli/puppet-python.git",
+  "project_page": "https://github.com/voxpupuli/puppet-python",
+  "issues_url": "https://github.com/voxpupuli/puppet-python/issues",
+  "tags": [
+    "python",
+    "pip",
+    "gunicorn"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "AIX",
+      "operatingsystemrelease": [
+        "6100-09-11-1810",
+        "7100-05-03-1837"
+      ]
+    },
+    {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "operatingsystem": "Gentoo"
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "18.04",
+        "20.04",
+        "22.04",
+        "24.04"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "11.3"
+      ]
+    },
+    {
+      "operatingsystem": "Archlinux"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.0.0 < 9.0.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.19.0 < 10.0.0"
+    },
+    {
+      "name": "puppet/epel",
+      "version_requirement": ">= 3.0.0 < 6.0.0"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+  ServerName <%= @fqdn %>
+  DocumentRoot /var/www/q2a
+
+  <Directory /var/www/q2a>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  ErrorLog ${APACHE_LOG_DIR}/q2a_error.log
+  CustomLog ${APACHE_LOG_DIR}/q2a_access.log combined
+</VirtualHost>

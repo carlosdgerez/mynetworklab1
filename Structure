@@ -1,0 +1,20 @@
+/etc/puppetlabs/code/environments/production/
+├── manifests/
+│   └── site.pp                        # Node definitions
+├── modules/
+│   ├── roles/
+│   │   ├── manifests/
+│   │   │   ├── web1.pp                # Role for web1.local
+│   │   │   ├── web2.pp                # Role for web2.local
+│   │   │   ├── load_balancer.pp       # Role for lb.local
+│   │   │   └── db.pp                  # Role for db.local
+│   ├── profiles/
+│   │   ├── manifests/
+│   │   │   ├── db.pp                  # Profile to configure MariaDB
+│   │   │   ├── web.pp                 # Profile to configure Apache/Q2A
+│   │   │   ├── load_balancer.pp       # Profile to configure HAProxy
+│   │   │   ├── web1.pp                # Custom profile for web1-specific settings
+│   │   │   └── web2.pp                # Custom profile for web2-specific settings
+│   │   └── templates/
+│   │       ├── q2a_apache_vhost.conf.erb # Apache VirtualHost template
+│   │       └── q2a_db.sql.erb            # Q2A database initialization

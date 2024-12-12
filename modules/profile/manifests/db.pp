@@ -1,4 +1,4 @@
-class profiles::db {
+class profile::db {
   package { ['mariadb-server', 'mariadb-client']:
     ensure => installed,
   }
@@ -16,7 +16,12 @@ class profiles::db {
 
   file { '/tmp/q2a_db.sql':
     ensure  => file,
-    content => template('profiles/q2a_db.sql.erb'),
+    content => "
+      CREATE DATABASE IF NOT EXISTS q2a;
+      CREATE USER 'q2a_user'@'%' IDENTIFIED BY 'secure_password';
+      GRANT ALL PRIVILEGES ON q2a.* TO 'q2a_user'@'%';
+      FLUSH PRIVILEGES;
+    ",
     mode    => '0644',
   }
 }

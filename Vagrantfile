@@ -40,7 +40,8 @@ Vagrant.configure("2") do |config|
     end
     web1.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web1.vm.provision "shell", path: "provisioners/firewallweb.sh"
-    web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+  #  web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+    web1.vm.provision "shell", path: "provisioners/unzipInstall.sh"
   end
 
   # Define the second web server VM with a static IP
@@ -50,13 +51,14 @@ Vagrant.configure("2") do |config|
     web2.vm.network "private_network", ip: "192.168.50.22"    # Internal network
     web2.vm.network "private_network", ip: "192.168.60.22"    # Secure zone
     web2.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
-    web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+  
     web2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
     web2.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web2.vm.provision "shell", path: "provisioners/firewallweb.sh"
-   
+   # web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+    web2.vm.provision "shell", path: "provisioners/unzipInstall.sh"
   end
 
   # Define the database server VM with a static IP (in a secure zone)

@@ -1,0 +1,49 @@
+#!/bin/bash
+# THIS PROVISIONER WAS THE TEST TO DEVELOP THE PUPPET CLASSES TO CONFIGURE Q2a
+# MOST OF THE CODE HERE IS TRANSLATED IN CONFIGURATION CLASSES FOR Q2a IN PUPPET MASTER. 
+
+# Exit on any error 
+set -e
+
+# Define variables https://www.question2answer.org/question2answer-latest.zip
+Q2A_VERSION="master"  # Change if you want a specific version
+Q2A_URL="https://github.com/q2a/question2answer/archive/$Q2A_VERSION.zip"
+INSTALL_DIR="/var/www/q2a"  # Adjust this if you want a different location
+DB_NAME="q2a"
+DB_USER="q2a_user"
+DB_PASS="secure_password"
+DB_HOST="192.168.60.10"
+
+echo "### Checking prerequisites..."
+if ! command -v curl &> /dev/null || ! command -v unzip &> /dev/null; then
+  echo "Please install 'curl' and 'unzip' before running this script."
+  exit 1
+fi
+
+echo "### Downloading Question2Answer..."
+mkdir -p $INSTALL_DIR
+curl -L $Q2A_URL -o /tmp/q2a.zip
+unzip /tmp/q2a.zip -d $INSTALL_DIR
+# mv /tmp/question2answer-*/* $INSTALL_DIR
+
+
+echo "### Setting permissions..."
+sudo chown -R www-data:www-data $INSTALL_DIR
+sudo chmod -R 755 $INSTALL_DIR
+
+echo "### Configuring Question2Answer..."
+cp $INSTALL_DIR/qa-config-example.php $INSTALL_DIR/qa-config.php
+cp $INSTALL_DIR/question2answer-master/.htaccess-example $INSTALL_DIR/question2answer-master/.htaccess
+# need repair:
+sed -i "s/define('QA_MYSQL_HOSTNAME', 'localhost');/define('QA_MYSQL_HOSTNAME', '$DB_HOST');/" $INSTALL_DIR/qa-config.php
+sed -i "s/define('QA_MYSQL_USERNAME', 'root');/define('QA_MYSQL_USERNAME', '$DB_USER');/" $INSTALL_DIR/qa-config.php
+sed -i "s/define('QA_MYSQL_PASSWORD', '');/define('QA_MYSQL_PASSWORD', '$DB_PASS');/" $INSTALL_DIR/qa-config.php
+sed -i "s/define('QA_MYSQL_DATABASE', 'q2a');/define('QA_MYSQL_DATABASE', '$DB_NAME');/" $INSTALL_DIR/qa-config.php
+
+echo "### Enabling Apache rewrite module..."
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+
+echo "### Finalizing installation..."
+echo "Visit your Question2Answer installation in your web browser:"
+echo "  http://$(hostname -I | awk '{print $1}')/qa/"

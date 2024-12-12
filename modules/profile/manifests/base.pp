@@ -3,6 +3,9 @@
   package { 'vim':
       ensure => present,
     }
+  include ::ntp
+
+ 
 
     user { 'carlos':
       ensure => present,

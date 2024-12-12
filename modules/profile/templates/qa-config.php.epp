@@ -1,0 +1,9 @@
+<?php
+define('QA_MYSQL_HOSTNAME', '<%= $db_host %>');
+define('QA_MYSQL_USERNAME', '<%= $db_user %>');
+define('QA_MYSQL_PASSWORD', '<%= $db_pass %>');
+define('QA_MYSQL_DATABASE', '<%= $db_name %>');
+
+// Other necessary configurations
+define('QA_BASE_URL', 'http://example.com/');
+?>

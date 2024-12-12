@@ -20,8 +20,16 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 # Deny other outgoing traffic
 # sudo iptables -A OUTPUT -j DROP
+# Restrict Access to Specific IP
 
+sudo iptables -A INPUT -p tcp -s 192.168.60.21 --dport 3306 -j ACCEPT
+sudo iptables -A INPUT -p tcp -s 192.168.60.22 --dport 3306 -j ACCEPT
 # save the rules
 
 sudo apt install iptables-persistent
 sudo netfilter-persistent save
+
+# Rules for the database to allow other host to connect.
+sudo apt install firewalld
+firewall-cmd --add-service=mysql --permanent
+firewll-cmd --reload

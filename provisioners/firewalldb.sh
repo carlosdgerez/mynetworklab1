@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # Allow traffic from web1 and web2
-sudo iptables -A INPUT -s 192.168.60.21 -j ACCEPT
-sudo iptables -A INPUT -s 192.168.60.22 -j ACCEPT
+sudo iptables -A INPUT -s 192.168.57.21 -j ACCEPT
+sudo iptables -A INPUT -s 192.168.57.22 -j ACCEPT
 
 # Allow traffic from puppet server
 sudo iptables -A INPUT -s 192.168.56.10 -j ACCEPT
@@ -22,8 +22,8 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # sudo iptables -A OUTPUT -j DROP
 # Restrict Access to Specific IP
 
-sudo iptables -A INPUT -p tcp -s 192.168.60.21 --dport 3306 -j ACCEPT
-sudo iptables -A INPUT -p tcp -s 192.168.60.22 --dport 3306 -j ACCEPT
+sudo iptables -A INPUT -p tcp -s 192.168.57.21 --dport 3306 -j ACCEPT
+sudo iptables -A INPUT -p tcp -s 192.168.57.22 --dport 3306 -j ACCEPT
 # save the rules
 
 sudo apt install iptables-persistent

@@ -12,7 +12,7 @@ INSTALL_DIR="/var/www/q2a"  # Adjust this if you want a different location
 DB_NAME="q2a"
 DB_USER="q2a_user"
 DB_PASS="secure_password"
-DB_HOST="192.168.60.10"
+DB_HOST="192.168.57.10"
 
 echo "### Checking prerequisites..."
 if ! command -v curl &> /dev/null || ! command -v unzip &> /dev/null; then

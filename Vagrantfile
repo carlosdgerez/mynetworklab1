@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     web1.vm.hostname = "web1.local"
     web1.vm.network "forwarded_port", guest: 80, host: 9091, auto_correct: true
     web1.vm.network "private_network", ip: "192.168.56.21"    # Internal network
-    web1.vm.network "private_network", ip: "192.168.60.21"    # Secure zone
+    web1.vm.network "private_network", ip: "192.168.57.21"    # Secure zone
     web1.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
 
     web1.vm.provider "virtualbox" do |vb|
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
     web2.vm.hostname = "web2.local"
     web2.vm.network "forwarded_port", guest: 80, host: 9092, auto_correct: true
     web2.vm.network "private_network", ip: "192.168.56.22"    # Internal network
-    web2.vm.network "private_network", ip: "192.168.60.22"    # Secure zone
+    web2.vm.network "private_network", ip: "192.168.57.22"    # Secure zone
     web2.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
   
     web2.vm.provider "virtualbox" do |vb|
@@ -65,7 +65,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :db do |db|
     db.vm.hostname = "db.local"
     db.vm.network "forwarded_port", guest: 80, host: 9093, auto_correct: true
-    db.vm.network "private_network", ip: "192.168.60.10"      # Secure zone
+    db.vm.network "private_network", ip: "192.168.57.10"      # Secure zone
     db.vm.network "public_network", type: "dhcp"              # NAT for internet. Comented to block. 
                                                               # (sudo ifconfig enp0s9 down) as fast alternative.
  

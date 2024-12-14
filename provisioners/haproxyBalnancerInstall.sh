@@ -22,7 +22,7 @@
 
       backend servers
         balance roundrobin
-        server web1 192.168.50.21:80 check
-        server web2 192.168.50.22:80 check" | sudo tee - a /etc/haproxy/haproxy.cfg
+        server web1 192.168.56.21:80 check
+        server web2 192.168.56.22:80 check" | sudo tee - a /etc/haproxy/haproxy.cfg
       sudo systemctl restart haproxy
     

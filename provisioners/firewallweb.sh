@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Allow traffic to LB
-sudo iptables -A OUTPUT -d 192.168.50.20 -j ACCEPT
+sudo iptables -A OUTPUT -d 192.168.56.20 -j ACCEPT
 
 # Allow traffic to DB
 sudo iptables -A OUTPUT -d 192.168.60.10 -j ACCEPT

@@ -3,10 +3,10 @@
 
 
 # Allow traffic to web servers
-sudo iptables -A OUTPUT -d 192.168.50.0/24 -j ACCEPT
+sudo iptables -A OUTPUT -d 192.168.56.0/21 -j ACCEPT
 
 # Block traffic to secure zone
-sudo iptables -A OUTPUT -d 192.168.60.0/24 -j DROP
+sudo iptables -A OUTPUT -d 192.168.60.0/21 -j DROP
 
 # Allow internet access
 sudo iptables -A OUTPUT -o eth1 -j ACCEPT

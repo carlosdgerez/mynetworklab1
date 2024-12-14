@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     # Forward ports for HTTP and HTTPS traffic
     lb.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
     lb.vm.network "forwarded_port", guest: 443, host: 8443, auto_correct: true
-    lb.vm.network "private_network", ip: "192.168.50.20"      # Internal network
+    lb.vm.network "private_network", ip: "192.168.56.20"      # Internal network
     lb.vm.network "public_network", type: "dhcp"              # NAT for internet
 
     lb.vm.synced_folder ".", "/myPuppetLab"
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :web1 do |web1|
     web1.vm.hostname = "web1.local"
     web1.vm.network "forwarded_port", guest: 80, host: 9091, auto_correct: true
-    web1.vm.network "private_network", ip: "192.168.50.21"    # Internal network
+    web1.vm.network "private_network", ip: "192.168.56.21"    # Internal network
     web1.vm.network "private_network", ip: "192.168.60.21"    # Secure zone
     web1.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
 
@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
     end
     web1.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web1.vm.provision "shell", path: "provisioners/firewallweb.sh"
-  #  web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+    #web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
     web1.vm.provision "shell", path: "provisioners/unzipInstall.sh"
   end
 
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :web2 do |web2|
     web2.vm.hostname = "web2.local"
     web2.vm.network "forwarded_port", guest: 80, host: 9092, auto_correct: true
-    web2.vm.network "private_network", ip: "192.168.50.22"    # Internal network
+    web2.vm.network "private_network", ip: "192.168.56.22"    # Internal network
     web2.vm.network "private_network", ip: "192.168.60.22"    # Secure zone
     web2.vm.network "public_network", type: "dhcp"            # NAT for internet. Comented to block.
   
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
     end
     web2.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web2.vm.provision "shell", path: "provisioners/firewallweb.sh"
-   # web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+    #web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
     web2.vm.provision "shell", path: "provisioners/unzipInstall.sh"
   end
 
@@ -79,7 +79,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :puppet do |puppet|
     puppet.vm.hostname = "puppet.local"
     puppet.vm.network "forwarded_port", guest: 80, host: 9090, auto_correct: true
-    puppet.vm.network "private_network", ip: "192.168.50.10" # Management network
+    puppet.vm.network "private_network", ip: "192.168.56.10" # Management network
     puppet.vm.network "public_network", type: "dhcp"          # NAT for internet. Review latter restricted access.
 
 

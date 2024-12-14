@@ -1,4 +1,4 @@
-class profile::website1 {
+class profile::website2 {
   package { ['php', 'php-mysql', 'unzip', 'php7.2'] :
     ensure => installed,
   }
@@ -31,7 +31,7 @@ class profile::website1 {
     ensure  => file,
     content => "
       <VirtualHost *:80>
-        ServerName web1.local
+        ServerName web2.local
         DocumentRoot /var/www/q2a/question2answer-master
 
         <Directory /var/www/q2a>

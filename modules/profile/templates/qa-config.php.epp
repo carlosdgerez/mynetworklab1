@@ -6,4 +6,20 @@ define('QA_MYSQL_DATABASE', '<%= $db_name %>');
 
 // Other necessary configurations
 define('QA_BASE_URL', 'http://example.com/');
+
+define('QA_MYSQL_TABLE_PREFIX', 'qa_');
+define('QA_EXTERNAL_USERS', false);
+define('QA_HTML_COMPRESSION', false);
+define('QA_MAX_LIMIT_START', 19999);
+define('QA_IGNORED_WORDS_FREQ', 10000);
+define('QA_ALLOW_UNINDEXED_QUERIES', false);
+define('QA_OPTIMIZE_DISTANT_DB', false);
+define('QA_PERSISTENT_CONN_DB', false);
+define('QA_DEBUG_PERFORMANCE', false);
+
+
+
+
+
+
 ?>

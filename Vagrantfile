@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
     end
     web1.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web1.vm.provision "shell", path: "provisioners/firewallweb.sh"
-    #web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+    web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
     web1.vm.provision "shell", path: "provisioners/unzipInstall.sh"
   end
 
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
     end
     web2.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     web2.vm.provision "shell", path: "provisioners/firewallweb.sh"
-    #web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
+    web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
     web2.vm.provision "shell", path: "provisioners/unzipInstall.sh"
   end
 

@@ -110,17 +110,30 @@ Below is a summary of the `Vagrantfile` configuration:
 
 ```ruby
 Vagrant.configure("2") do |config|
-  (1..5).each do |i|
-    config.vm.define "vm#{i}" do |vm|
-      vm.vm.box = "ubuntu/bionic64"
-      vm.vm.network "private_network", type: "dhcp"
-      vm.vm.provider "virtualbox" do |vb|
-        vb.memory = "1024"
-        vb.cpus = 1
-      end
+  # Define the base box to use
+  config.vm.box = BOX  # You can choose any base box
+  config.vm.boot_timeout= 300
+  config.ssh.insert_key = true
+
+  # Define the load balancer VM with a static IP
+  config.vm.define :lb do |lb|
+    lb.vm.hostname = "lb.local"
+
+    # Forward ports for HTTP and HTTPS traffic
+    lb.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+    lb.vm.network "forwarded_port", guest: 443, host: 8443, auto_correct: true
+    lb.vm.network "private_network", ip: "192.168.56.20"      # Internal network
+    lb.vm.network "public_network", type: "dhcp"              # NAT for internet
+
+    lb.vm.synced_folder ".", "/myPuppetLab"
+
+    lb.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"  # Adjust the memory allocation
     end
+    lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"  
+    lb.vm.provision "shell", path: "provisioners/firewalllb.sh"
+    
   end
-end
 ```
 
 ---

@@ -20,6 +20,7 @@ The initial deployment was on a Windows 11 machine, but adjustments are being ma
 4. [Setup Instructions](#setup-instructions)
 5. [Vagrantfile Overview](#vagrantfile-overview)
 6. [Puppet Server Deployment](#puppet-server-deployment)
+   - [Network Architecture Diagram](#3-network-architecture-diagram)
    - [Puppet Directory Structure](#puppet-directory-structure)
 7. [Tips for Optimization](#tips-for-optimization)
 8. [Troubleshooting](#troubleshooting)
@@ -148,7 +149,7 @@ vagrant global-status
 sudo apt update
 sudo apt install -y iptables-persistent
 ```
-- After installation reload the vms with the option of run again the provisioners (Is runing only the first time as default). 
+- After installation reload the vms with the option of run again the provisioners to get the firewall configurations to be updated (Is runing only the first time as default). 
 
 ```bash
 sudo vagrant reload puppet --provision
@@ -194,7 +195,10 @@ Vagrant.configure("2") do |config|
     
   end
 ```
-
+- In the previous code notice that is a synced folder atached to several machines to have common acces the the puppets files from the host.
+- This folders allow to use an editor on the host to edit files inside the puppet server.
+- Notice also the use of diferent ports on the host to connect ssh and web services. 
+- DHCP is not completelly necessary but add the functionality that you can connect to the ports in the host machine from any machine in your home - - - network. This is an exercise, use secure measures when need it.
 ---
 
 ## **Puppet Server Deployment**
@@ -215,6 +219,7 @@ Verify it is running:
 sudo systemctl status puppetserver
 ```
 
+
 ### 2. Requesting Certificates from the Puppet Master:
 
 On each agent node, run:
@@ -230,7 +235,34 @@ sudo puppetserver ca list
 sudo puppetserver ca sign --all
 ```
 
-### 3. Deploying Classes, Profiles, and Roles:
+### 3. **Network Architecture Diagram**
+- This diagram illustrates the network setup with three distinct security zones:
+```plaintext
+Public Zone (Internet)
+  └── Load Balancer (Unsecure Zone)
+       ├── Web Server 1 (DMZ)
+       ├── Web Server 2 (DMZ)
+           └── Database Server (Secure Zone)
+```           
+- This is acomplish by segmenting the ip address in subzones.
+- In the future firewalls can be added and manage access, logs and VLANS to provide more security.
+- The puppet server had access to all machines and manage certificates. It acts as a CA ()
+
+### 4. Puppet Server Security in Network Architecture
+
+A Puppet server manages configurations across machines, and security is crucial because it has control over sensitive infrastructure. Here's how the Puppet server can maintain security in this network architecture:
+
+#### 1. Securing Communication with SSL/TLS
+
+##### Mutual Authentication
+Puppet uses **SSL/TLS certificates** for all communication between the Puppet server and its agents (nodes):  
+- Each agent presents its certificate to the Puppet server, and the server validates it.  
+- Likewise, the Puppet server presents its certificate to the agent for verification.  
+
+##### Certificate Authority (CA)
+Puppet Server acts as the **Certificate Authority (CA)** to issue and manage certificates for all nodes:  
+- Only authenticated agents with valid certificates can connect and receive configurations.
+### 5. Deploying Classes, Profiles, and Roles:
 
 The Puppet master applies the configured classes, profiles, and roles. These configurations include:
 
@@ -280,7 +312,7 @@ This structure allows:
 
 ---
 
-### 4. Puppetboard:
+### 6. Puppetboard:
 
 Puppetboard, a web interface for Puppet, is automatically deployed on the Puppet master. Access it at:
 

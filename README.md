@@ -101,6 +101,19 @@ This command will:
 
 - Download the base box if it isn't already available.
 - Create and start 5 VMs with the specified configuration.
+- If resources are limited it must be need it to run the command foer each machine individually.
+
+```bash
+vagrant up lb
+
+vagrant up db
+
+vagrant up web1
+
+vagrant up web2
+
+vagrant up puppet
+```
 
 ### 5. Verify the Setup:
 
@@ -113,7 +126,7 @@ vagrant status
 - SSH into a specific VM:
 
 ```bash
-vagrant ssh vm1
+vagrant ssh web1
 ```
 
 - Test connectivity between VMs using `ping`:
@@ -121,7 +134,30 @@ vagrant ssh vm1
 ```bash
 ping <VM_IP_Address>
 ```
+- Check the states of all VMs connected
 
+```bash
+vagrant global-status
+```
+### 6. Install iptables-persistent to configure secure zones between the servers.
+- The installation of iptables aloud to manage the conection between zones.
+- This installation cannot be performed as the others in a provisioner script file since it has an interactive window. 
+- Install iptables-persistent with the following commands in each vm.
+
+```bash
+sudo apt update
+sudo apt install -y iptables-persistent
+```
+- After installation reload the vms with the option of run again the provisioners (Is runing only the first time as default). 
+
+```bash
+sudo vagrant reload puppet --provision
+```
+- To list all commands available in vagrant use:
+
+```bash
+vagrant list-commands
+```
 ---
 
 ## **Vagrantfile Overview**

@@ -34,7 +34,8 @@ sudo chmod -R 755 $INSTALL_DIR
 echo "### Configuring Question2Answer..."
 cp $INSTALL_DIR/qa-config-example.php $INSTALL_DIR/qa-config.php
 cp $INSTALL_DIR/question2answer-master/.htaccess-example $INSTALL_DIR/question2answer-master/.htaccess
-# need repair:
+
+# need further work :
 sed -i "s/define('QA_MYSQL_HOSTNAME', 'localhost');/define('QA_MYSQL_HOSTNAME', '$DB_HOST');/" $INSTALL_DIR/qa-config.php
 sed -i "s/define('QA_MYSQL_USERNAME', 'root');/define('QA_MYSQL_USERNAME', '$DB_USER');/" $INSTALL_DIR/qa-config.php
 sed -i "s/define('QA_MYSQL_PASSWORD', '');/define('QA_MYSQL_PASSWORD', '$DB_PASS');/" $INSTALL_DIR/qa-config.php

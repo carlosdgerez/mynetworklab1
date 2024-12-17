@@ -135,30 +135,36 @@ vagrant ssh web1
 ```bash
 ping <VM_IP_Address>
 ```
+
 - Check the states of all VMs connected
 
 ```bash
 vagrant global-status
 ```
+
 ### 6. Install iptables-persistent to configure secure zones between the servers.
+
 - The installation of iptables aloud to manage the conection between zones.
-- This installation cannot be performed as the others in a provisioner script file since it has an interactive window. 
+- This installation cannot be performed as the others in a provisioner script file since it has an interactive window.
 - Install iptables-persistent with the following commands in each vm.
 
 ```bash
 sudo apt update
 sudo apt install -y iptables-persistent
 ```
-- After installation reload the vms with the option of run again the provisioners to get the firewall configurations to be updated (Is runing only the first time as default). 
+
+- After installation reload the vms with the option of run again the provisioners to get the firewall configurations to be updated (Is runing only the first time as default).
 
 ```bash
 sudo vagrant reload puppet --provision
 ```
+
 - To list all commands available in vagrant use:
 
 ```bash
 vagrant list-commands
 ```
+
 ---
 
 ## **Vagrantfile Overview**
@@ -190,15 +196,17 @@ Vagrant.configure("2") do |config|
     lb.vm.provider "virtualbox" do |vb|
       vb.memory = "512"  # Adjust the memory allocation
     end
-    lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"  
+    lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
     lb.vm.provision "shell", path: "provisioners/firewalllb.sh"
-    
+
   end
 ```
+
 - In the previous code notice that is a synced folder atached to several machines to have common acces the the puppets files from the host.
 - This folders allow to use an editor on the host to edit files inside the puppet server.
-- Notice also the use of diferent ports on the host to connect ssh and web services. 
+- Notice also the use of diferent ports on the host to connect ssh and web services.
 - DHCP is not completelly necessary but add the functionality that you can connect to the ports in the host machine from any machine in your home - - - network. This is an exercise, use secure measures when need it.
+
 ---
 
 ## **Puppet Server Deployment**
@@ -219,7 +227,6 @@ Verify it is running:
 sudo systemctl status puppetserver
 ```
 
-
 ### 2. Requesting Certificates from the Puppet Master:
 
 On each agent node, run:
@@ -236,32 +243,40 @@ sudo puppetserver ca sign --all
 ```
 
 ### 3. **Network Architecture Diagram**
+
 - This diagram illustrates the network setup with three distinct security zones:
+
 ```plaintext
 Public Zone (Internet)
   └── Load Balancer (Unsecure Zone)
        ├── Web Server 1 (DMZ)
        ├── Web Server 2 (DMZ)
            └── Database Server (Secure Zone)
-```           
+```
+
 - This is acomplish by segmenting the ip address in subzones.
 - In the future firewalls can be added and manage access, logs and VLANS to provide more security.
-- The puppet server had access to all machines and manage certificates. It acts as a CA ()
+- The puppet server had access to all machines and manage certificates.
 
 ### 4. Puppet Server Security in Network Architecture
 
 A Puppet server manages configurations across machines, and security is crucial because it has control over sensitive infrastructure. Here's how the Puppet server can maintain security in this network architecture:
 
-#### 1. Securing Communication with SSL/TLS
+#### Securing Communication with SSL/TLS
 
 ##### Mutual Authentication
-Puppet uses **SSL/TLS certificates** for all communication between the Puppet server and its agents (nodes):  
-- Each agent presents its certificate to the Puppet server, and the server validates it.  
-- Likewise, the Puppet server presents its certificate to the agent for verification.  
+
+Puppet uses **SSL/TLS certificates** for all communication between the Puppet server and its agents (nodes):
+
+- Each agent presents its certificate to the Puppet server, and the server validates it.
+- Likewise, the Puppet server presents its certificate to the agent for verification.
 
 ##### Certificate Authority (CA)
-Puppet Server acts as the **Certificate Authority (CA)** to issue and manage certificates for all nodes:  
+
+Puppet Server acts as the **Certificate Authority (CA)** to issue and manage certificates for all nodes:
+
 - Only authenticated agents with valid certificates can connect and receive configurations.
+
 ### 5. Deploying Classes, Profiles, and Roles:
 
 The Puppet master applies the configured classes, profiles, and roles. These configurations include:

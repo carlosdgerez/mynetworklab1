@@ -1,6 +1,6 @@
 # Install iptables-persistent to save rules
 sudo apt update
-sudo apt install -y iptables-persistent
+#sudo apt install -y iptables-persistent
 
 # Set up basic firewall rules
 
@@ -12,6 +12,8 @@ sudo iptables -P OUTPUT ACCEPT
 sudo iptables -A FORWARD -o eth0 -j ACCEPT
 sudo iptables -A FORWARD -i eth0 -j ACCEPT
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+
 # Save the rules for persistence
 sudo netfilter-persistent save
 

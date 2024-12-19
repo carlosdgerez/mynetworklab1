@@ -103,8 +103,8 @@ class profile::website2 {
 
   exec { 'set_permissions':
     command => "/bin/chown -R www-data:www-data ${install_dir} && /bin/chmod -R 755 ${install_dir}",
-    #require => Class['profile::q2a_download_and_install'],
+    #require => 
   }
-  notify { 'Hello, this is a notice from web1, q2a installation done!':
+  notify { 'Hello, this is a notice from web2, q2a installation done!':
   }
 }

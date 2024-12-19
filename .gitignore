@@ -1,3 +1,5 @@
 # Ignore SSH keys
 puppet-ssh-key
 **/private_key
+# Ignore mariadb checksums
+modules/mariadb/checksums.json

@@ -86,7 +86,7 @@ cd mynetworklab1
   - **Base Box:** Ubuntu Bionic 64-bit (`ubuntu/bionic64`)
   - **RAM per VM:** 0.5 GB except the puppetserver
   - **CPU per VM:** 1 core (see the example)
-  - **Networking:** Private network with DHCP
+  - **Networking:** Private network with static ip address and an optional public DHCP configuration.
 
 #### To customize the setup:
 

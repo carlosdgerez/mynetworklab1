@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# r10k installer
+# r10k installer 
 
 /opt/puppetlabs/puppet/bin/gem install r10k
 

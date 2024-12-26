@@ -1,7 +1,7 @@
 #! /bin/bash
 
-sudo apt-get update
-sudo apt-get install -y apache2
-echo "Web Server" | sudo tee /var/www/html/index.html
-sudo systemctl enable apache2
-sudo systemctl start apache2
+   apt-get update
+   apt-get install -y apache2
+echo "Web Server" |    tee /var/www/html/index.html
+   systemctl enable apache2
+   systemctl start apache2

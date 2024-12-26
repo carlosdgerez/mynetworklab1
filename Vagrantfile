@@ -22,9 +22,9 @@ Vagrant.configure("2") do |config|
     lb.vm.provider "virtualbox" do |vb|
       vb.memory = "512"  # Adjust the memory allocation
     end
-    lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"  
-    lb.vm.provision "shell", path: "provisioners/firewalllb.sh"
-    
+    lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true  
+    lb.vm.provision "shell", path: "provisioners/firewalllb.sh", privileged: true
+    lb.vm.provision "shell", path: "provisioners/haproxyBalnancerInstall.sh", privileged: true
   end
 
   # Define the first web server VM with a static IP
@@ -38,10 +38,10 @@ Vagrant.configure("2") do |config|
     web1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-    web1.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
-    web1.vm.provision "shell", path: "provisioners/firewallweb.sh"
-    web1.vm.provision "shell", path: "provisioners/apacheInstall.sh"
-    web1.vm.provision "shell", path: "provisioners/unzipInstall.sh"
+    web1.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true
+    web1.vm.provision "shell", path: "provisioners/firewallweb.sh", privileged: true
+    web1.vm.provision "shell", path: "provisioners/apacheInstall.sh", privileged: true
+    web1.vm.provision "shell", path: "provisioners/unzipInstall.sh", privileged: true
   end
 
   # Define the second web server VM with a static IP
@@ -55,10 +55,10 @@ Vagrant.configure("2") do |config|
     web2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-    web2.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
-    web2.vm.provision "shell", path: "provisioners/firewallweb.sh"
-    web2.vm.provision "shell", path: "provisioners/apacheInstall.sh"
-    web2.vm.provision "shell", path: "provisioners/unzipInstall.sh"
+    web2.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true
+    web2.vm.provision "shell", path: "provisioners/firewallweb.sh", privileged: true
+    web2.vm.provision "shell", path: "provisioners/apacheInstall.sh", privileged: true
+    web2.vm.provision "shell", path: "provisioners/unzipInstall.sh", privileged: true
   end
 
   # Define the database server VM with a static IP (in a secure zone)
@@ -72,8 +72,8 @@ Vagrant.configure("2") do |config|
     db.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
-    db.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh"
-    db.vm.provision "shell", path: "provisioners/firewalldb.sh"
+    db.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true
+    db.vm.provision "shell", path: "provisioners/firewalldb.sh", privileged: true
    
   end
   config.vm.define :puppet do |puppet|
@@ -88,8 +88,8 @@ Vagrant.configure("2") do |config|
     puppet.vm.provider "virtualbox" do |vb|
       vb.memory = "3072"  # Adjust the memory allocation
     end
-    puppet.vm.provision "shell", path: "provisioners/puppetserverInstall.sh"
-    puppet.vm.provision "shell", path: "provisioners/firewallPuppet.sh"
-    puppet.vm.provision "shell", path: "provisioners/r10kInstall.sh" 
+    puppet.vm.provision "shell", path: "provisioners/puppetserverInstall.sh", privileged: true
+    puppet.vm.provision "shell", path: "provisioners/firewallPuppet.sh", privileged: true
+    puppet.vm.provision "shell", path: "provisioners/r10kInstall.sh", privileged: true 
   end
 end

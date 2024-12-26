@@ -31,7 +31,7 @@ class profile::website1 {
     ensure  => file,
     content => "
       <VirtualHost *:80>
-        ServerName web2.local
+        ServerName web1.local
         DocumentRoot /var/www/q2a/question2answer-master
 
         <Directory /var/www/q2a>
@@ -75,7 +75,7 @@ class profile::website1 {
   $db_name     = 'q2a'
   $db_user     = 'q2a_user'
   $db_pass     = 'secure_password'
-  $db_host     = '192.168.60.10'
+  $db_host     = '192.168.57.10'
 
  
  file { "${install_dir}/qa-config.php":

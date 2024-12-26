@@ -75,7 +75,7 @@ class profile::website2 {
   $db_name     = 'q2a'
   $db_user     = 'q2a_user'
   $db_pass     = 'secure_password'
-  $db_host     = '192.168.60.10'
+  $db_host     = '192.168.57.10'
 
  
  file { "${install_dir}/qa-config.php":

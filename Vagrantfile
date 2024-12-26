@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     end
     lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true  
     lb.vm.provision "shell", path: "provisioners/firewalllb.sh", privileged: true
-    lb.vm.provision "shell", path: "provisioners/haproxyBalnancerInstall.sh", privileged: true
+  # lb.vm.provision "shell", path: "provisioners/haproxyBalnancerInstall.sh", privileged: true
   end
 
   # Define the first web server VM with a static IP

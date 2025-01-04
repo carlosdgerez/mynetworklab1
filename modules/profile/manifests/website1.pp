@@ -105,6 +105,6 @@ class profile::website1 {
     command => "/bin/chown -R www-data:www-data ${install_dir} && /bin/chmod -R 755 ${install_dir}",
     #require => 
   }
-  notify { 'Hello, this is a notice from web2, q2a installation done!':
+  notify { 'Hello, this is a notice from web1, q2a installation done!':
   }
 }

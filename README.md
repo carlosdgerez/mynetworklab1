@@ -375,6 +375,12 @@ vagrant halt vm1 vm2
 
 Feel free to fork this repository and submit pull requests to improve the setup or add new features.
 ## Improvements
+- Fix the db idempotency . 
+1. Error while resolving custom fact fact='mysql_version', resolution='': undefined method `[]' for nil:NilClass 
+2. err	'/usr/bin/mysql < /tmp/q2a_db.sql' returned 7 instead of one of [0]	
+3. err	/Stage[main]/Profile::Db/Exec[initialize_q2a_database]/returns
+
+change from 'notrun' to ['0'] failed: '/usr/bin/mysql < /tmp/q2a_db.sql' returned 7 instead of one of [0] (corrective
 - I still working on a provider for each nachine that update the /etc/hosts to configure the allocated ip addresses.
 - Must start soon to implement Playbooks on Ansible.
 - A Vagrant provianter for Ansible or a puppet deployment of Ansible?

@@ -40,8 +40,8 @@ iptables -A OUTPUT -p tcp -d 192.168.56.10 --sport 8140 -j ACCEPT
   iptables -A INPUT -p tcp -s 192.168.57.21 --dport 3306 -j ACCEPT
   iptables -A INPUT -p tcp -s 192.168.57.22 --dport 3306 -j ACCEPT
 
-# Optional: Deny other outgoing traffic (uncomment if needed)
-#   iptables -A OUTPUT -j DROP
+# Optional: Deny other outgoing traffic on port 3306 (uncomment if needed)
+   iptables -A OUTPUT --dport 3306 -j DROP
 
 # Save iptables rules for persistence
   netfilter-persistent save

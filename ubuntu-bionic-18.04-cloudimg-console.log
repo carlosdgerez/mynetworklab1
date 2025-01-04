@@ -684,3 +684,5 @@ puppet login: [   37.240489] cloud-init[1499]: Cloud-init v. 23.1.2-0ubuntu0~18.
 [[0;32m  OK  [0m] Started Daily apt download activities.
          Starting Daily apt upgrade and clean activities...
 [[0;32m  OK  [0m] Started Daily apt upgrade and clean activities.
+[10987.216402] Out of memory: Kill process 1915 (java) score 687 or sacrifice child
+[10987.239584] Killed process 1915 (java) total-vm:5001356kB, anon-rss:2108224kB, file-rss:0kB, shmem-rss:0kB

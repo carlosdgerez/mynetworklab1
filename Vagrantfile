@@ -73,7 +73,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "512"
     end
     db.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true
-    db.vm.provision "shell", path: "provisioners/firewalldb.sh", privileged: true
+    db.vm.provision "shell", name: "firewalldb", path: "provisioners/firewalldb.sh", privileged: true
    
   end
   config.vm.define :puppet do |puppet|

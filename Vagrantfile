@@ -24,7 +24,9 @@ Vagrant.configure("2") do |config|
     end
     lb.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true  
     lb.vm.provision "shell", path: "provisioners/firewalllb.sh", privileged: true
-  # lb.vm.provision "shell", path: "provisioners/haproxyBalnancerInstall.sh", privileged: true
+    lb.vm.provision "shell", path: "provisioners/lb_hosts_update.sh", privileged: true
+
+    # lb.vm.provision "shell", path: "provisioners/haproxyBalnancerInstall.sh", privileged: true this provision is managed now by a puppet file.
   end
 
   # Define the first web server VM with a static IP
@@ -42,6 +44,7 @@ Vagrant.configure("2") do |config|
     web1.vm.provision "shell", path: "provisioners/firewallweb.sh", privileged: true
     web1.vm.provision "shell", path: "provisioners/apacheInstall.sh", privileged: true
     web1.vm.provision "shell", path: "provisioners/unzipInstall.sh", privileged: true
+    web1.vm.provision "shell", path: "provisioners/web1_hosts_update.sh", privileged: true
   end
 
   # Define the second web server VM with a static IP
@@ -59,6 +62,7 @@ Vagrant.configure("2") do |config|
     web2.vm.provision "shell", path: "provisioners/firewallweb.sh", privileged: true
     web2.vm.provision "shell", path: "provisioners/apacheInstall.sh", privileged: true
     web2.vm.provision "shell", path: "provisioners/unzipInstall.sh", privileged: true
+    web2.vm.provision "shell", path: "provisioners/web2_hosts_update.sh", privileged: true
   end
 
   # Define the database server VM with a static IP (in a secure zone)
@@ -74,6 +78,7 @@ Vagrant.configure("2") do |config|
     end
     db.vm.provision "shell", path: "provisioners/puppetAgentInstall.sh", privileged: true
     db.vm.provision "shell", name: "firewalldb", path: "provisioners/firewalldb.sh", privileged: true
+    db.vm.provision "shell", path: "provisioners/db_hosts_update.sh", privileged: true
    
   end
   config.vm.define :puppet do |puppet|
@@ -91,5 +96,6 @@ Vagrant.configure("2") do |config|
     puppet.vm.provision "shell", path: "provisioners/puppetserverInstall.sh", privileged: true
     puppet.vm.provision "shell", path: "provisioners/firewallPuppet.sh", privileged: true
     puppet.vm.provision "shell", path: "provisioners/r10kInstall.sh", privileged: true 
+    puppet.vm.provision "shell", path: "provisioners/puppet_hosts_update.sh", privileged: true
   end
 end

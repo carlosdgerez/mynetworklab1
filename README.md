@@ -25,7 +25,8 @@ The initial deployment was on a Windows 11 machine, but adjustments are being ma
 7. [Tips for Optimization](#tips-for-optimization)
 8. [Troubleshooting](#troubleshooting)
 9. [Contributing](#contributing)
-10. [License](#license)
+10. [Improvements](#improvements)
+11. [License](#license)
 
 ---
 
@@ -367,13 +368,16 @@ vagrant halt vm1 vm2
 3. **Network Connectivity Issues:**
    - Ensure all VMs are on the same private network.
    - Verify firewall rules inside VMs (e.g., using `ufw`).
-
+   
 ---
 
 ## **Contributing**
 
 Feel free to fork this repository and submit pull requests to improve the setup or add new features.
-
+## Improvements
+- I still working on a provider for each nachine that update the /etc/hosts to configure the allocated ip addresses.
+- Must start soon to implement Playbooks on Ansible.
+- A Vagrant provianter for Ansible or a puppet deployment of Ansible?
 ---
 
 ## **License**

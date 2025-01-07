@@ -11,7 +11,7 @@ wget https://apt.puppetlabs.com/puppet8-release-bionic.deb
 
    # Create a symbolic link between production environment and the synced file
    rm -rf /etc/puppetlabs/code/environments/production
-   ln -s /home/carlos/Desktop/lab/mynetworklab /production
+   ln -s /mynetworklab/ production
 
 
 

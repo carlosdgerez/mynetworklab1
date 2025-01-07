@@ -1,1 +1,1 @@
-{"virtualbox":{"/mynetworklab":{"guestpath":"/mynetworklab","hostpath":"C:/Users/Emilia/Desktop/workSearch/vagrant/mynetworklab","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/mynetworklab":{"guestpath":"/mynetworklab","hostpath":"/home/carlos/Desktop/lab/mynetworklab1","disabled":false,"__vagrantfile":true}}}

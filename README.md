@@ -243,6 +243,32 @@ sudo puppetserver ca list
 sudo puppetserver ca sign --all
 ```
 
+## Troubleshuting
+Regenerate Agent Certificates 
+On the Puppet Agent:
+  
+  - Remove the existing SSL directory:
+  ```bash
+rm -rf /etc/puppetlabs/puppet/ssl
+```
+Revoque and clean old certificates:
+ ```bash
+puppetserver ca revoke --certname <agent_fqdn>
+puppetserver ca clean --certname <agent_fqdn>
+```
+Request a new certificate:
+ ```bash
+puppet agent -t
+```
+Sign the new certificate in the puppet master (puppet.local):
+ ```bash
+puppetserver ca sign --certname <agent_fqdn>
+```
+
+Check the Puppet logs for detailed error messages:
+
+    Puppet Master Logs: /var/log/puppetlabs/puppetserver/puppetserver.log
+    Puppet Agent Logs: /var/log/puppetlabs/puppet/puppet.log
 ### 3. **Network Architecture Diagram**
 
 - This diagram illustrates the network setup with three distinct security zones:

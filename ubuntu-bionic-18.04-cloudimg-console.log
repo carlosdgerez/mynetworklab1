@@ -636,9 +636,8 @@ See 'systemctl status ufw.service' for details.
 [[0;32m  OK  [0m] Created slice system-getty.slice.
 [[0;32m  OK  [0m] Started Getty on tty1.
 [[0;32m  OK  [0m] Reached target Login Prompts.
-[[0;32m  OK  [0m] Started Authorization Manager.
-[[0;32m  OK  [0m] Started Accounts Service.
-[[0;32m  OK  [0m] Started LSB: automatic crash report generation.
+[[0;32m  OK  [0m] Started Authorization Manag[37276.360815] e1000 0000:00:09.0 enp0s9: Reset adapter
+32m  OK  [0m] Started LSB: automatic crash report generation.
 [[0;32m  OK  [0m] Started The Apache HTTP Server.
 [[0;32m  OK  [0m] Started Dispatcher daemon for systemd-networkd.
 [[0;32m  OK  [0m] Started LXD - container startup/shutdown.
@@ -663,8 +662,8 @@ puppet login: [   91.821116] cloud-init[1346]: Cloud-init v. 23.1.2-0ubuntu0~18.
 [[0;32m  OK  [0m] Started User Manager for UID 1000.
 [[0;32m  OK  [0m] Started puppetdb Service.
 [[0;32m  OK  [0m] Started puppetserver Service.
-[[0;32m  OK  [0m] Reached target Multi-User System.
-[[0;32m  OK  [0m] Reached target Graphical Interface.
+[[0;32m  OK  [0m] Reached target Multi-User System[36676.622964] e1000 0000:00:0a.0 enp0s10: Reset adapter
+
          Starting Update UTMP about System Runlevel Changes...
          Starting Execute cloud user/final scripts...
 [[0;32m  OK  [0m] Started Update UTMP about System Runlevel Changes.
@@ -672,3 +671,10 @@ puppet login: [   91.821116] cloud-init[1346]: Cloud-init v. 23.1.2-0ubuntu0~18.
 [  263.189718] cloud-init[3225]: Cloud-init v. 23.1.2-0ubuntu0~18.04.1 finished at Sat, 04 Jan 2025 22:22:30 +0000. Datasource DataSourceNoCloud [seed=/dev/sdb][dsmode=net].  Up 263.16 seconds
 [[0;32m  OK  [0m] Started Execute cloud user/final scripts.
 [[0;32m  OK  [0m] Reached target Cloud-init target.
+[17282.537376] Out of memory: Kill process 1602 (java) score 698 or sacrifice child
+[17282.551684] Killed process 1602 (java) total-vm:4991268kB, anon-rss:2140976kB, file-rss:0kB, shmem-rss:0kB
+[26870.523553] Out of memory: Kill process 7766 (java) score 693 or sacrifice child
+[26870.541433] Killed process 7766 (java) total-vm:4990904kB, anon-rss:2124932kB, file-rss:0kB, shmem-rss:0kB
+[33722.516348] e1000 0000:00:09.0 enp0s9: Reset adapter
+[34185.440697] Out of memory: Kill process 10355 (java) score 689 or sacrifice child
+[34185.457069] Killed process 10355 (java) total-vm:4990292kB, anon-rss:2115472kB, file-rss:0kB, shmem-rss:0kB

@@ -24,10 +24,6 @@ The initial deployment was on a Windows 11 machine, but adjustments are being ma
    - [Puppet Directory Structure](#puppet-directory-structure)
 7. [Tips for Optimization](#tips-for-optimization)
 8. [Troubleshooting](#troubleshooting)
-9. [Contributing](#contributing)
-10. [Improvements](#improvements)
-11. [License](#license)
-
 ---
 
 ## **Setup**

@@ -8,6 +8,8 @@ wget https://apt.puppetlabs.com/puppet8-release-bionic.deb
    apt-get update
    apt-get install -y puppetserver pdk
    systemctl start puppetserver
+   rm -rf /etc/puppetlabs/code/environments/production
+   ln -s /home/carlos/Desktop/lab/mynetworklab /production
 
 
 

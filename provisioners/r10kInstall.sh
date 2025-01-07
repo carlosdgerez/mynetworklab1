@@ -6,4 +6,4 @@
 
 # install modules that are in the puppetfile in the root directory
 
-/opt/puppetlabs/puppet/bin/r10k puppetfile install -v
+/opt/puppetlabs/puppet/bin/r10k Puppetfile install -v

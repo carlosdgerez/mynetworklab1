@@ -24,4 +24,22 @@ class profile::db {
     ",
     mode    => '0644',
   }
+  file { '/etc/mysql/my.cnf':
+    ensure  => present,
+    mode    => '0644',
+    require => Package['mariadb-server'],
+  }
+
+  exec { 'update_mysql_bind_address':
+    command => '/bin/echo -e "\n[mysqld]\nbind-address = 0.0.0.0" >> /etc/mysql/my.cnf',
+    unless  => '/bin/grep -q "bind-address = 0.0.0.0" /etc/mysql/my.cnf',
+    require => File['/etc/mysql/my.cnf'],
+  }
+
+  exec { 'restart_mariadb_service':
+    command => '/bin/systemctl restart mysql',
+    refreshonly => true,
+    subscribe   => Exec['update_mysql_bind_address'],
+    require     => Service['mariadb'],
+  }
 }

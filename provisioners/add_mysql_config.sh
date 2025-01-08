@@ -6,7 +6,7 @@ if [ -f /etc/mysql/my.cnf ]; then
   echo "Configuration added to /etc/mysql/my.cnf"
 
   # Restart MySQL service to apply changes
-  sudo systemctl restart mysql
+  systemctl restart mysql
 else
   echo "Error: /etc/mysql/my.cnf not found. Please check your MySQL installation."
 fi

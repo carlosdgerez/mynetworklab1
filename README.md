@@ -228,8 +228,8 @@ sudo puppet agent -t
 Then, on the Puppet master, sign the certificates:
 
 ```bash
-sudo puppetserver ca list
-sudo puppetserver ca sign --all
+puppetserver ca list
+puppetserver ca sign --all
 ```
 
 ## Troubleshooting 

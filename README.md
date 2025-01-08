@@ -232,7 +232,7 @@ sudo puppetserver ca list
 sudo puppetserver ca sign --all
 ```
 
-## Troubleshuting
+## Troubleshooting 
 Regenerate Agent Certificates 
 On the Puppet Agent:
   

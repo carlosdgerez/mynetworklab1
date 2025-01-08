@@ -142,15 +142,8 @@ vagrant global-status
 ### 6. Install iptables-persistent to configure secure zones between the servers.
 
 - The installation of iptables aloud to manage the conection between zones.
-- This installation cannot be performed as the others in a provisioner script file since it has an interactive window.
-- Install iptables-persistent with the following commands in each vm.
-
-```bash
-sudo apt update
-sudo apt install -y iptables-persistent
-```
-
-- After installation reload the vms with the option of run again the provisioners to get the firewall configurations to be updated (Is runing only the first time as default).
+- Provisioners for each machine provide the network zones when vagrant runs the first time.
+- After installation reload the vms with the option of run again the provisioners to get the firewall configurations to be updated if nessesary(Is runing only the first time as default).
 
 ```bash
 sudo vagrant reload puppet --provision

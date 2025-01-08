@@ -1,6 +1,6 @@
 {
   "name": "puppet-puppetboard",
-  "version": "10.0.0",
+  "version": "11.0.1-rc0",
   "author": "Vox Pupuli",
   "summary": "Install and configure PuppetBoard",
   "license": "Apache-2.0",
@@ -14,24 +14,48 @@
   "issues_url": "https://github.com/voxpupuli/puppet-puppetboard/issues",
   "operatingsystem_support": [
     {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    },
+    {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "10",
-        "11"
+        "11",
+        "12"
       ]
     },
     {
       "operatingsystem": "FreeBSD",
       "operatingsystemrelease": [
-        "12",
-        "13"
+        "13",
+        "14"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "9"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04",
-        "20.04"
+        "20.04",
+        "22.04"
       ]
     }
   ],
@@ -48,7 +72,7 @@
     },
     {
       "name": "puppet/python",
-      "version_requirement": ">= 6.3.0 < 7.0.0"
+      "version_requirement": ">= 6.3.0 < 8.0.0"
     }
   ]
 }

@@ -6,7 +6,7 @@ class profile::puppetboard {
 
   # Configure Puppetboard
   class { 'puppetboard':
-   # python_version    => '3.8',
+    python_version    => '3.6.9',
     secret_key        => 'supersecret',
     manage_virtualenv => true,
   }

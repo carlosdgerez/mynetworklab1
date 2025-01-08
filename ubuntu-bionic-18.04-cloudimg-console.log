@@ -696,3 +696,6 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDlYAgaKCfnCOcBApTy45mU6e/9CN6keJI0qLbHxlBS
 -----END SSH HOST KEY KEYS-----
 [   57.751094] cloud-init[1610]: Cloud-init v. 23.1.2-0ubuntu0~18.04.1 running 'modules:final' at Tue, 07 Jan 2025 15:31:33 +0000. Up 56.95 seconds.
 [   57.775060] cloud-init[1610]: Cloud-init v. 23.1.2-0ubuntu0~18.04.1 finished at Tue, 07 Jan 2025 15:31:34 +0000. Datasource DataSourceNoCloud [seed=/dev/sdb][dsmode=net].  Up 57.62 seconds
+[30425.803710] Out of memory: Kill process 20441 (java) score 734 or sacrifice child
+[30425.832431] Killed process 20441 (java) total-vm:4989128kB, anon-rss:2251928kB, file-rss:0kB, shmem-rss:0kB
+kB, shmem-rss:0kB

@@ -3,3 +3,8 @@ puppet-ssh-key
 **/private_key
 # Ignore mariadb checksums
 modules/mariadb/checksums.json
+
+# Ignore changes in the machines instances
+ubuntu-bionic-18.04-cloudimg-console.log
+ubuntu-xenial-16.04-cloudimg-console.log
+.vagrant\machines

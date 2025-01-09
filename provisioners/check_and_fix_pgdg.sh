@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the expected content
-EXPECTED_REPO="deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main"
+EXPECTED_REPO="deb https://apt-archive.postgresql.org/pub/repos/apt bionic-pgdg main"
 FILE_PATH="/etc/apt/sources.list.d/pgdg.list"
 
 # Check if the file exists

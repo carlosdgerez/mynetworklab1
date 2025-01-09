@@ -97,6 +97,7 @@ Vagrant.configure("2") do |config|
     puppet.vm.provision "shell", path: "provisioners/firewallPuppet.sh", privileged: true
     puppet.vm.provision "shell", path: "provisioners/r10kInstall.sh", privileged: true 
     puppet.vm.provision "shell", path: "provisioners/puppet_hosts_update.sh", privileged: true
+    puppet.vm.provision "shell", path: "provisioners/check_and_fix_pgdg.sh", privileged: true 
     puppet.vm.provision "shell", path: "provisioners/install_ansible.sh", privileged: true
   end
 end

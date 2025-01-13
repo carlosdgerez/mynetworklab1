@@ -1,0 +1,17 @@
+[webservers]
+web1.local ansible_host=192.168.56.21
+web2.local ansible_host=192.168.56.22
+[webservers:vars]
+ansible_user=vagrant
+
+[intern]
+db.local ansible_host=192.168.57.10
+[intern:vars]
+ansible_user=vagrant
+
+[extern]
+lb.local ansible_host=192.168.56.20 
+
+[extern:vars]
+ansible_user=vagrant
+

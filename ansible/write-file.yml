@@ -1,0 +1,10 @@
+---
+- name: Write a simple file with
+  host: web1.local
+  gather_facts: false
+  task: 
+    - name: Write file test.txt to temp directory
+      ansible.builtin.lineinfile:
+        path: /tmp/test.txt
+        line: just some fast and simple text
+        create: true

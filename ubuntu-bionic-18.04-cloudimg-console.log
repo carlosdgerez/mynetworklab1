@@ -1,5 +1,6 @@
 [25709.745956] e1000 0000:00:09.0 enp0s9: Reset adapter
-[26812.667160] Out of memory: Kill process 27162 (java) score 701 or sacrifice child
+[112485.838577] e1000 0000:00:0a.0 enp0s10: Reset adapter
+re 701 or sacrifice child
 [26812.722585] Killed process 27162 (java) total-vm:4989256kB, anon-rss:2150960kB, file-rss:0kB, shmem-rss:0kB
 [65095.500907] watchdog: BUG: soft lockup - CPU#1 stuck for 29s! [qtp268724026-17:16437]
 [81661.476111] Out of memory: Kill process 31455 (java) score 731 or sacrifice child

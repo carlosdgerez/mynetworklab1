@@ -1,7 +1,7 @@
-[25709.745956] e1000 0000:00:09.0 enp0s9: Reset adapter
-[112485.838577] e1000 0000:00:0a.0 enp0s10: Reset adapter
+[150855.550915] e1000 0000:00:0a.0 enp0s10: Reset adapter
+12485.838577] e1000 0000:00:0a.0 enp0s10: Reset adapter
 re 701 or sacrifice child
 [26812.722585] Killed process 27162 (java) total-vm:4989256kB, anon-rss:2150960kB, file-rss:0kB, shmem-rss:0kB
 [65095.500907] watchdog: BUG: soft lockup - CPU#1 stuck for 29s! [qtp268724026-17:16437]
 [81661.476111] Out of memory: Kill process 31455 (java) score 731 or sacrifice child
-[81661.495810] Killed process 31455 (java) total-vm:4995008kB, anon-rss:2243968kB, file-rss:0kB, shmem-rss:0kB
+[81661.495810] Killed process 31455 (java) total-vm:4995008kB, anon-rss:2243968kB, file-rss:0k[150350.343215] e1[149939.383806] e1000 0000:00:09.0 enp0s9: Reset adapter
